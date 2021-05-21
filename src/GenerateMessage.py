@@ -1,18 +1,20 @@
-from random import randrange
+import numpy as np
 import re
 
-control_number = 0
 
 class GenerateMessage:
 
+    control_number = 0
+    list_of_sentences = None
+
     def __init__(self):
 
+        self.list_of_sentences = self.split_string()
 
-        list_of_sentences = self.split_string()
 
     def split_string(self):
 
-        # reads text form file
+        # reads text from file
         f = open('text.txt')
         self.text = f.read()
 
@@ -23,11 +25,26 @@ class GenerateMessage:
     def get_sentences(self):
         """Returns random amount of sentences from text"""
 
-        return 'test'
+        output = ''
+
+        # randomizes the number of sentences with given probabilities
+        number_of_sentences = np.random.choice(np.arange(3, 7), p=[0.2, 0.3, 0.3, 0.2])
+
+        # checks if there are enough sentences in list and if not takes all that's left
+        if self.control_number + number_of_sentences > len(self.list_of_sentences):
+            number_of_sentences = len(self.list_of_sentences) - self.control_number
+
+        # iterates thought given amount of sentences and concatenates them
+        for i in range(self.control_number, self.control_number + number_of_sentences):
+            output += self.list_of_sentences[i] + '. '
+
+        self.control_number += number_of_sentences
+
+        return output
 
     def get_image(self):
         """Returns source of random monkey image"""
 
-        return 'monke\p (' + str(randrange(1097)) + ').jpg'
+        return 'monke\p (' + str(np.random.choice(990)) + ').jpg'
 
 
