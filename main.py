@@ -23,7 +23,7 @@ async def on_message(message):
     user_message = str(message.content)
     channel = str(message.channel.name)
 
-    sentences = randint(2,3)
+    messages = randint(2,3)
     readOutLoud = False
 
     if message.channel.name == 'test':
@@ -31,9 +31,9 @@ async def on_message(message):
             await message.channel.send(f'dzieki {username}')
         elif user_message.lower() == 'czytaj':
             readOutLoud = True
-            sentences = 1
+            messages = 1
 
-        for i in range(sentences):
+        for i in range(messages):
             await message.channel.send(msg.get_sentences(), tts=readOutLoud)
             await message.channel.send(file=discord.File(Path(msg.get_image())))
             time.sleep(1.0)

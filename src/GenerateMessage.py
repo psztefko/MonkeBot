@@ -5,7 +5,7 @@ import re
 class GenerateMessage:
 
     control_number = 0
-    list_of_sentences = None
+    list_of_sentences = []
 
     def __init__(self):
 
