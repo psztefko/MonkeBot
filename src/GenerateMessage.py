@@ -28,7 +28,7 @@ class GenerateMessage:
         output = ''
 
         # randomizes the number of sentences with given probabilities
-        number_of_sentences = np.random.choice(np.arange(3, 7), p=[0.2, 0.3, 0.3, 0.2])
+        number_of_sentences = np.random.choice(np.arange(2, 5), p=[0.3, 0.4, 0.3])
 
         # checks if there are enough sentences in list and if not takes all that's left
         if self.control_number + number_of_sentences > len(self.list_of_sentences):
